@@ -51,10 +51,118 @@ export const constantRoutes = [
       path: 'dashboard',
       name: 'Dashboard',
       component: () => import('@/views/dashboard/index'),
-      meta: { title: 'Dashboard', icon: 'dashboard' }
+      meta: { title: '首页', icon: 'dashboard', affix: true }
     }]
   },
 
+  {
+    path: '/generalize',
+    component: Layout,
+    redirect: '/generalize/page',
+    name: 'Generalize',
+    meta: { title: '推广管理', icon: 'generalize' },
+    children: [
+      {
+        path: 'page',
+        name: 'Page',
+        component: () => import('@/views/generalize/page'),
+        meta: { title: '推广页面', icon: 'page' }
+      },
+      {
+        path: 'place',
+        name: 'Place',
+        component: () => import('@/views/generalize/place'),
+        meta: { title: '渠道管理', icon: 'place' }
+      },
+      {
+        path: 'link',
+        name: 'Link',
+        component: () => import('@/views/generalize/link'),
+        meta: { title: '推广链接', icon: 'link' }
+      }
+    ]
+  },
+  {
+    path: '/data',
+    component: Layout,
+    redirect: '/data/realtime',
+    name: 'Data',
+    meta: { title: '数据管理', icon: 'data' },
+    children: [
+      {
+        path: 'realtime',
+        name: 'Realtime',
+        component: () => import('@/views/data/realtime'),
+        meta: { title: '实时数据', icon: 'realtime' }
+      },
+      {
+        path: 'realtimeStatistics',
+        name: 'RealtimeStatistics',
+        component: () => import('@/views/data/realtimeStatistics'),
+        meta: { title: '实时数据统计', icon: 'realtimeStatistics' }
+      },
+      {
+        path: 'external',
+        name: 'External',
+        component: () => import('@/views/data/external'),
+        meta: { title: '外部数据', icon: 'external' }
+      },
+      {
+        path: 'externalStatistics',
+        name: 'ExternalStatistics',
+        component: () => import('@/views/data/externalStatistics'),
+        meta: { title: '外部数据统计', icon: 'externalStatistics' }
+      },
+      {
+        path: 'port',
+        name: 'Port',
+        component: () => import('@/views/data/port'),
+        meta: { title: '接口测试数据', icon: 'port' }
+      }
+    ]
+  },
+  {
+    path: '/uv',
+    component: Layout,
+    redirect: '/uv/index',
+    name: 'Uv',
+    meta: { title: 'uv统计', icon: 'uv' },
+    children: [
+      {
+        path: 'details',
+        name: 'UvDetails',
+        component: () => import('@/views/uv/details'),
+        meta: { title: 'uv明细', icon: 'uvDetails' }
+      }
+    ]
+  },
+  {
+    path: '/supermarket',
+    component: Layout,
+    redirect: '/supermarket/proManage',
+    name: 'Supermarket',
+    meta: { title: '贷超产品', icon: 'supermarket' },
+    children: [
+      {
+        path: 'promanage',
+        name: 'ProManage',
+        component: () => import('@/views/supermarket/proManage'),
+        meta: { title: '产品管理', icon: 'promanage' }
+      },
+      {
+        path: 'clickdetails',
+        name: 'ClickDetails',
+        component: () => import('@/views/supermarket/clickDetails'),
+        meta: { title: '产品点击明细', icon: 'clickdetails' }
+      },
+      {
+        path: 'clickstatistics',
+        name: 'ClickStatistics',
+        component: () => import('@/views/supermarket/clickStatistics'),
+        meta: { title: '产品点击统计', icon: 'clickstatistics' }
+      }
+    ]
+  },
   {
     path: '/example',
     component: Layout,
@@ -163,8 +271,10 @@ export const constantRoutes = [
   { path: '*', redirect: '/404', hidden: true }
 ]
 
+export const asyncRoutes = []
+
 const createRouter = () => new Router({
-  // mode: 'history', // require service support
+  mode: 'history', // require service support
   scrollBehavior: () => ({ y: 0 }),
   routes: constantRoutes
 })

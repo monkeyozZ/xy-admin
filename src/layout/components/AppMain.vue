@@ -2,6 +2,9 @@
   <section class="app-main">
     <transition name="fade-transform" mode="out-in">
       <router-view :key="key" />
+      <!-- <keep-alive :include="cachedViews">
+        <router-view></router-view>
+      </keep-alive> -->
     </transition>
   </section>
 </template>
@@ -26,7 +29,7 @@ export default {
   overflow: hidden;
 }
 .fixed-header+.app-main {
-  padding-top: 50px;
+  padding-top: 84px;
 }
 </style>
 
